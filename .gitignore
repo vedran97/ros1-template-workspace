@@ -13,4 +13,3 @@ build
 devel
 .catkin_workspace
 packages.txt
-CMakeLists.txt
