@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
     ros::Publisher velocityPub =
     node.advertise<geometry_msgs::Twist>("/cmd_vel", 0);
 
-    const double loopRate = 10; //50 times a second
+    const double loopRate = 50; //50 times a second
 
     ros::Rate loop_rate(loopRate); 
 
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
     double time = 0.0; // seconds (could use stl time literals as units)
     const double timeIncrement = 1/loopRate;
     const double xInit = 0;
-    const double xFinal = 2000.0;
+    const double xFinal = 200.0;
     const double totalTime = getT(xInit,xFinal);
 
     std::cout<<"total time:"<<totalTime<<std::endl;
@@ -64,7 +64,7 @@ int main(int argc, char **argv) {
 
         velocityPub.publish(velCommand);
 
-        // std::cout<<"time: "<<time<<"linear vel:"<<velCommand.linear.x<<" total time:"<<totalTime<<std::endl;
+        std::cout<<"time: "<<time<<"linear vel:"<<velCommand.linear.x<<" total time:"<<totalTime<<std::endl;
 
         loop_rate.sleep();
 
