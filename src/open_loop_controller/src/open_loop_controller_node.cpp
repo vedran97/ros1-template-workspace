@@ -12,7 +12,8 @@ geometry_msgs::Twist velCommand;
  * T is the total time required for a motion to start and finish
  * vmax = max linear velocity
  * v(t) = t*(4*vmax/T)-(4*vmax/(T^2))t^2
- * x(0) = xInitial, x(T) = xFinal where x(t)
+ * x(0) = xInitial, x(T) = xFinal where x(t) is x coordinate's positon wrt to time
+ * T = (6/4*vmax) * (xFinal - xInitial) //solving integralv(t)dt and adding boundary conditions , we get this
  */
 static const constexpr double vmax = 0.22; //turtlebot seems to lose all controllability at higher velocities. // this number is taken from turtlebot3_teleop
 
@@ -53,7 +54,7 @@ int main(int argc, char **argv) {
 
     double time = 0.0; // seconds (could use stl time literals as units)
     const double timeIncrement = 1/loopRate;
-    const double xInit = -2.00021;
+    const double xInit = -2.00021;  // in the chosen gazebo world, initial pose of x = -2.0021
     const double xFinal = 0;
     const double totalTime = getT(xInit,xFinal);
 
