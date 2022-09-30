@@ -10,14 +10,17 @@ geometry_msgs::Twist velCommand;
  * Assuming 1D motion in X direction
  * Using a velocity profile which is a inverted parabola
  * T is the total time required for a motion to start and finish
- * v(t) = t*T-t^2
- * x(t) = t^2/2*T - t^3/3 + c x(0) = xInitial, x(T) = xFinal 
+ * vmax = max linear velocity
+ * v(t) = t*(4*vmax/T)-(4*vmax/(T^2))t^2
+ * x(0) = xInitial, x(T) = xFinal where x(t)
  */
-double getXLinearVelocity(const double& time,const double& T){
-    return (time*T - time*time);
+static const constexpr double vmax = 0.22; //turtlebot seems to lose all controllability at higher velocities. // this number is taken from turtlebot3_teleop
+
+double getXLinearVelocity(const double& t,const double& T){
+    return  t*(4*vmax/T)+(-(4*vmax/(T*T))*t*t);
 }
 double getT(const double&  xInitial, const double& xFinal){
-    return std::cbrt(6*(xFinal-xInitial));
+    return (6/(4*vmax))*(xFinal - xInitial);
 }
 
 
@@ -35,7 +38,7 @@ int main(int argc, char **argv) {
     ros::Publisher velocityPub =
     node.advertise<geometry_msgs::Twist>("/cmd_vel", 0);
 
-    const double loopRate = 50; //50 times a second
+    const double loopRate = 500; //500 times a second
 
     ros::Rate loop_rate(loopRate); 
 
@@ -50,8 +53,8 @@ int main(int argc, char **argv) {
 
     double time = 0.0; // seconds (could use stl time literals as units)
     const double timeIncrement = 1/loopRate;
-    const double xInit = 0;
-    const double xFinal = 200.0;
+    const double xInit = -2.00021;
+    const double xFinal = 0;
     const double totalTime = getT(xInit,xFinal);
 
     std::cout<<"total time:"<<totalTime<<std::endl;
@@ -64,8 +67,6 @@ int main(int argc, char **argv) {
 
         velocityPub.publish(velCommand);
 
-        std::cout<<"time: "<<time<<"linear vel:"<<velCommand.linear.x<<" total time:"<<totalTime<<std::endl;
-
         loop_rate.sleep();
 
         time += timeIncrement;
@@ -77,6 +78,6 @@ int main(int argc, char **argv) {
             break;
         }
     }
-    std::cout<<"Open loop controller action over, exiting program";
+    std::cout<<"Open loop controller action over, exiting program"<<std::endl;
 return 0;
 }

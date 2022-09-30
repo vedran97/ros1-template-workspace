@@ -1,9 +1,9 @@
 [submodule "src/turtlebot3_msgs"]
 	path = src/turtlebot3_msgs
-	url = git@https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git:src/turtlebot3_msgs/.git
+	url = https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
 [submodule "src/turtlebot3"]
 	path = src/turtlebot3
-	url = git@https://github.com/ROBOTIS-GIT/turtlebot3.git:src/turtlebot3/.git
+	url = https://github.com/ROBOTIS-GIT/turtlebot3.git
 [submodule "src/turtlebot3_simulations"]
 	path = src/turtlebot3_simulations
-	url = git@https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git:src/turtlebot3_simulations/.git
+	url = https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
