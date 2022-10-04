@@ -15,11 +15,11 @@
     2. Remote-Containers :  https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
 5. Clone this repository using:
     > ``` git clone --recurse-submodules https://github.com/vedran97/ros1-workspace-template.git ```
-6. From the current working directory, cd to ros2-workspace-template repo which u just cloned
-7. Open a terminal in ros2-workspace-template and type 
+6. From the current working directory, cd to ros1-workspace-template repo which u just cloned
+7. Open a terminal in ros1-workspace-template and type 
     > ``` code . ```
 8. A VSCode popup should arise which says "Open folder in Container" where you choose Yes OR press F1,search for "Open Folder in Container" and execute the command
-9. Now wait for the build process to finish, once it's completed, you have a fully functional ROS2 workspace with example packages
+9. Now wait for the build process to finish, once it's completed, you have a fully functional ROS1 workspace with example packages
 11. When the container is built for the first time, a error will popup saying "Failed to enable ROS Extension" , just choose the reload window option
 10. Set up ROS dependencies using the following section
 
