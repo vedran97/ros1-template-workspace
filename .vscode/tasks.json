@@ -1,0 +1,77 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "ROS1: Build  Package",
+            "detail": "Builds All or a Single package in ROS Workspace",
+            "type": "shell",
+            "command": "./dev-scripts/build.sh ${input:buildMode} ${input:package}",
+            "group": {
+                "kind": "build"
+            },
+            "problemMatcher": "$gcc",
+            "presentation" : {
+                "panel":"dedicated"
+            }
+        },
+        {
+            "label": "ROS: Clean",
+            "detail": "Clean the Workspace Build Area",
+            "type": "shell",
+            "command": "./dev-scripts/clean.sh",
+            "problemMatcher": "$gcc",
+            "group": "build",
+            "presentation" : {
+                "panel":"dedicated"
+            }
+        },
+        {
+            "label": "ROS: Install ROS dependencies",
+            "detail": "Download all repositories required for the workspace",
+            "type": "shell",
+            "command": "./dev-scripts/deps.sh",
+            "problemMatcher": [],
+            "group": "build",
+            "presentation" : {
+                "panel":"dedicated"
+            }
+        }
+    ],
+    "inputs": [
+        {
+        "id": "package",
+        "type": "command",
+        "command": "memento.promptString",
+        "args" : {
+            "id" : "package",
+            "description" : "Ros1 Package Name",
+            "default" : "",
+            "placeholder": "Ros1 Package Name"
+        }
+        },
+        {
+            "id": "buildMode",
+            "type": "command",
+            "command": "memento.pickString",
+            "args" : {
+                "id" : "buildMode",
+                "description": "Build mode",
+                "options" : ["Debug", "Release"],
+                "default": "Debug"
+            }
+        },
+        {
+            "id": "test",
+            "type": "command",
+            "command": "memento.promptString",
+            "args" : {
+                "id" : "test",
+                "description" : "Test Name",
+                "default" : "",
+                "placeholder": "Test Name"
+                }
+        }
+    ]
+}

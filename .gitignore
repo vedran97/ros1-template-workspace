@@ -13,3 +13,5 @@ build
 devel
 .catkin_workspace
 packages.txt
+logs
+.catkin_tools

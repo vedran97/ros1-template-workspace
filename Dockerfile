@@ -15,4 +15,5 @@ RUN export DEBIAN_FRONTEND=noninteractive &&\
 
 USER $USERNAME
 
+
 ENV SHELL /bin/bash

@@ -23,24 +23,25 @@
 11. When the container is built for the first time, a error will popup saying "Failed to enable ROS Extension" , just choose the reload window option
 10. Set up ROS dependencies using the following section
 
+# VS Code tasks:
+
+0. How to use this? Ans: Open this directory as a container(or not) and press "Ctrl+Shift+B" to get a drop down list of available tasks.<br>Like this: <br> ![Tasks](./docs/tasks.png)
+1. "ROS:Build a Package" task -> This task lets you build a selected few, or all packages. CMake parrallelism limits have been added to prevent crashing during builds.
+    1. Choose a build config:<br>![Build-Config](./docs/buildmode.png)
+    2. Choose a package name:<br>![Package-Name](./docs/pkgname.png)
+<br>choosing no package name, will build all packages in this directory
+2. "ROS:Install ROS dependencies" task -> This task lets you install ros-deps which are mentioned in any package's package.xml file, which is included in this workspace.
+3. "ROS: Clean" task -> This task cleans the workspace off all build artifacts
+
 # Setting up ROS-Dependencies :
 
-1. Once the repo is opened in a container, you have to install ROS1-dependencies. To do this, follow these steps:
-    0. Inside the container, use a bash terminal will open at the following command's path if not, run it
-    1. cd /workspaces/ros1-template-workspace
-    2. rosdep update
-    3. sudo apt-get update
-    4. rosdep install --from-paths src --ignore-src -r -y
-
-# Building Packages:
-
-1. cd /workspaces/ros1-template-workspace
-2. catkin_make
+1. Run the VSCode task "ROS:Install ROS dependencies"
 
 # Open loop controller code for a turtlebot3:
 
 1. Once all packages are built, in 1 terminal window, run "roslaunch turtlebot3_gazebo turtlebot3_world.launch"
 2. In another terminal window , run "rosrun open_loop_controller open_loop_controller_node"
+
 
 
 
