@@ -1,5 +1,11 @@
 {
 	"dockerFile": "../Dockerfile",
+	"build": {
+		"args": {
+			"WORKSPACE": "${containerWorkspaceFolder}",
+			"BUILDKIT_INLINE_CACHE": "0"
+		}
+	},
 	"runArgs": [
 		"--network=host",
 		"--privileged",
