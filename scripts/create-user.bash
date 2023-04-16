@@ -13,4 +13,4 @@ apt-get install -y sudo
 echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
 chmod 0440 /etc/sudoers.d/$USERNAME
 # permissions for executing vs code tasks
-chmod u+rwx $SCRIPT_LOCATION/../dev-scripts
+chmod u+rwx $SCRIPT_LOCATION/../dev-scripts/*

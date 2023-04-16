@@ -8,16 +8,14 @@
       "includePath": [
         "/workspaces/ros1-template-workspace/devel/include/**",
         "/opt/ros/noetic/include/**",
-        "/workspaces/ros1-template-workspace/src/turtlebot3_simulations/turtlebot3_fake/include/**",
-        "/workspaces/ros1-template-workspace/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
-        "/workspaces/ros1-template-workspace/src/turtlebot3/turtlebot3_slam/include/**",
         "/usr/include/**"
       ],
       "name": "ROS",
       "intelliSenseMode": "gcc-x64",
       "compilerPath": "/usr/bin/gcc",
       "cStandard": "gnu11",
-      "cppStandard": "c++14"
+      "cppStandard": "c++14",
+      "compileCommands": "${workspaceFolder}/build/compile_commands.json"
     }
   ],
   "version": 4
