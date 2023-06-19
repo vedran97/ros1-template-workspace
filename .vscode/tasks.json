@@ -4,10 +4,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "ROS1: Build  Package",
+            "label": "ROS1: Build Package",
             "detail": "Builds All or a Single package in ROS Workspace",
             "type": "shell",
-            "command": "./dev-scripts/build.sh ${input:buildMode} ${input:package}",
+            "command": "./dev-scripts/build.sh ${input:buildMode} N ${input:package}",
             "group": {
                 "kind": "build"
             },
@@ -17,7 +17,7 @@
             }
         },
         {
-            "label": "ROS: Clean",
+            "label": "ROS1: Clean",
             "detail": "Clean the Workspace Build Area",
             "type": "shell",
             "command": "./dev-scripts/clean.sh",
@@ -28,8 +28,8 @@
             }
         },
         {
-            "label": "ROS: Install ROS dependencies",
-            "detail": "Download all repositories required for the workspace",
+            "label": "ROS1: Install ROS dependencies",
+            "detail": "Install all ROS dependecies required for the workspace",
             "type": "shell",
             "command": "./dev-scripts/deps.sh",
             "problemMatcher": [],
@@ -37,7 +37,21 @@
             "presentation" : {
                 "panel":"dedicated"
             }
-        }
+        },
+        {
+            "label": "ROS1: Build Tests",
+            "detail": "Build packages for testing",
+            "type": "shell",
+            "problemMatcher": "$gcc",
+            // "command": "catkin build --make-args tests --cmake-args -DCMAKE_C_FLAGS=-Wall -Wextra -Wpedantic -Wno-unused-parameter -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+            "command": "./dev-scripts/build.sh Debug Y ${input:package}",
+            "group": {
+                "kind": "build"
+            },
+            "presentation" : {
+                "panel":"dedicated"
+            }
+          }
     ],
     "inputs": [
         {

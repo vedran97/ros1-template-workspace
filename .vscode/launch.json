@@ -12,7 +12,22 @@
         "externalConsole": false,
         "MIMode": "gdb",
         "miDebuggerPath": "/usr/bin/gdb", // Modify this path according to your system configuration
-        "stopAtEntry": true
+        "stopAtEntry": true,
+        "preLaunchTask": "ROS1: Build Package"
+      },
+      {
+        "name": "ROS GTest",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/devel/lib/${input:package}/${input:testName}",
+        "args": [],
+        "cwd": "${workspaceFolder}/",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/bin/gdb",
+        "stopAtEntry": true,
+        "preLaunchTask": "ROS1: Build Tests",
       }
     ],
     "inputs": [
@@ -25,7 +40,14 @@
         "id": "node",
         "type": "promptString",
         "description": "Enter the name of your ROS node executable"
+      },
+      {
+        "id": "testName",
+        "type": "promptString",
+        "description": "Enter the test name",
+        "default": "my_test"
       }
     ]
+
   }
   
