@@ -31,7 +31,7 @@ else
     DCMAKE_BUILD_TYPE="Debug"
 fi
 
-catkin build ${package_select} --jobs ${jobs} --parallel-packages ${parrallelPkgs} --mem-limit ${memlimit}% --cmake-args -DCMAKE_C_FLAGS=${DCMAKE_C_FLAGS} -DCMAKE_BUILD_TYPE=${DCMAKE_BUILD_TYPE}
+catkin build ${package_select} --jobs ${jobs} --parallel-packages ${parrallelPkgs} --mem-limit ${memlimit}% --cmake-args -DCMAKE_C_FLAGS=${DCMAKE_C_FLAGS} -DCMAKE_BUILD_TYPE=${DCMAKE_BUILD_TYPE} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 ./dev-scripts/concat.sh
 echo "Script has finished executing"
 

@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "ROS Node Debug",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/devel/lib/${input:package}/${input:node}",
+        "args": [],
+        "cwd": "${workspaceFolder}/",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/bin/gdb", // Modify this path according to your system configuration
+        "stopAtEntry": true
+      }
+    ],
+    "inputs": [
+      {
+        "id": "package",
+        "type": "promptString",
+        "description": "Enter the name of your ROS package"
+      },
+      {
+        "id": "node",
+        "type": "promptString",
+        "description": "Enter the name of your ROS node executable"
+      }
+    ]
+  }
+  
